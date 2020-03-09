@@ -6,8 +6,8 @@ RSpec.describe 'Access to static_pages', type: :request do
     it 'responds successfully' do
       expect(response).to have_http_status 200
     end
-    it "has title 'Home | Ruby on Rails Sample App'" do
-      expect(response.body).to include 'Home | Ruby on Rails Sample App'
+    it "has title Ruby on Rails Sample App" do
+      expect(response.body).to include 'Ruby on Rails Sample App'
     end
   end
   context 'GET #help' do
