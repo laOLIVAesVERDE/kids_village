@@ -9,6 +9,9 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
 gem 'bootstrap-sass'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'rails-i18n'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
