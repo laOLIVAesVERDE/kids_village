@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'site layout', type: :system do
   include ApplicationHelper
-  
+
   context 'access to root_path' do
     before { visit root_path }
     subject { page }
@@ -17,8 +17,8 @@ RSpec.describe 'site layout', type: :system do
   context 'access to signup_path' do
     before { visit signup_path }
     subject { page }
-    it "has content '登録して始める' and title 'Sign up'" do
-      is_expected.to have_content '登録して始める'
+    it "has content 'Kids Villageへようこそ' and title 'Sign up'" do
+      is_expected.to have_content "アカウント作成"
       is_expected.to have_title full_title('Sign up')
     end
   end

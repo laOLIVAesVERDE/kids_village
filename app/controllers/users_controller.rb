@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Kids Villageへようこそ"
       redirect_to @user
     else
       render 'new'
@@ -26,5 +27,5 @@ class UsersController < ApplicationController
                                    :password_confirmation,
                                    :image)
     end
-    
+
 end
