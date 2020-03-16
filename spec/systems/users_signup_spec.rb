@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'users signup', type: :system do
-  include ApplicationHelper
+  include ApplicationHelper, SessionsHelper
 
   before { visit signup_path }
 
@@ -23,8 +23,8 @@ RSpec.describe 'users signup', type: :system do
   it 'can complete with valid attributes' do
     user = FactoryBot.build(
       :user,
-        name: "ふうた",
-        email: "example2@example.com",
+        name: "integra",
+        email: "integra@example.com",
         password: '12242339',
         password_confirmation: '12242339',
       )
@@ -35,9 +35,11 @@ RSpec.describe 'users signup', type: :system do
       fill_in "パスワード", with: user.password
       fill_in "パスワード（確認）", with: user.password_confirmation
       click_button "Kids Villageへようこそ"
-    }.to change(User, :count).to(1)
+    }.to change(User, :count).to(2)
     expect(page).to have_title full_title(user.name)
     expect(page).to have_selector 'div.alert-success'
+    click_link 'アカウント'
+    expect(page).to have_link 'ログアウト', href: logout_path
   end
 
 
