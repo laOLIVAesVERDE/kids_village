@@ -12,6 +12,7 @@ gem 'bootstrap-sass'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'rails-i18n'
+gem 'jquery-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
