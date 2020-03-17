@@ -35,7 +35,7 @@ RSpec.describe 'users signup', type: :system do
       fill_in "パスワード", with: user.password
       fill_in "パスワード（確認）", with: user.password_confirmation
       click_button "Kids Villageへようこそ"
-    }.to change(User, :count).to(2)
+    }.to change(User, :count).to(1)
     expect(page).to have_title full_title(user.name)
     expect(page).to have_selector 'div.alert-success'
     click_link 'アカウント'
