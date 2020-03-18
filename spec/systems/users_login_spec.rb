@@ -53,6 +53,7 @@ RSpec.describe 'users login', type: :system do
         click_link 'アカウント'
         click_link 'ログアウト'
         expect(page).to have_link 'ログイン', login_path
+        expect(page).to have_selector 'div.alert-success'
         expect(page).to_not have_link 'Account'
         expect(page).to_not have_link nil, href: logout_path
         expect(page).to_not have_link nil, href: user_path(user)
