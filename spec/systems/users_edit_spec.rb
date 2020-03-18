@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe 'user edit', type: :system do
+  include ApplicationHelper
+
   let(:user) {
     create(:user,
            name: 's2000',
            email: 's2000@example.com',
            password: '12242339',
-           password_confirmation: '12242339')
+           password_confirmation: '12242339',
+           admin: true)
   }
 
   let(:other_user) {
@@ -51,7 +54,7 @@ RSpec.describe 'user edit', type: :system do
 
   context 'when user does not login' do
 
-      it 'canot access to user profile' do
+      it 'cannot access to user profile' do
         visit user_path(user)
         expect(page).to have_selector 'div.alert-danger'
         expect(page).to have_content 'ログイン'
@@ -62,16 +65,42 @@ RSpec.describe 'user edit', type: :system do
         expect(page).to have_selector 'div.alert-danger'
         expect(page).to have_content 'ログイン'
       end
+
+      it 'rendering user edit after login' do
+        visit edit_user_path(user)
+        expect(page).to have_selector 'div.alert-danger'
+        expect(page).to have_content 'ログイン'
+        log_in_as(user)
+        expect(page).to have_title full_title('Edit user')
+      end
   end
 
   context 'when it is wrong user' do
+
     before do
       log_in_as(other_user)
     end
 
-    it 'cannot access to user profile' do
+    it 'cannot access to user edit' do
       visit user_path(user)
       expect(page).to have_title 'ホーム'
+    end
+  end
+
+  context 'when user try to delete himiself' do
+    it 'cannot be completed without login' do
+      visit user_path(user)
+      expect(page).to have_selector 'div.alert-danger'
+      expect(page).to have_content 'ログイン'
+    end
+
+    it 'can be completed after login' do
+      log_in_as(user)
+      visit edit_user_path(user)
+      expect(page).to have_title full_title('Edit user')
+      click_link '削除する'
+      page.driver.browser.switch_to.alert.accept
+      expect(page).to have_title full_title 'ホーム'
     end
   end
 

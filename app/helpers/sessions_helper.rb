@@ -25,4 +25,15 @@ module SessionsHelper
     @current_user = nil
   end
 
+  #redirect to remembered url
+  def redirect_back_or(default)
+    redirect_to(session[:forwarding_url] || default)
+    session.delete(:forwarding_url)
+  end
+
+  #remember the url
+  def store_location
+    #request.original_urlでリクエスト先が取得できる
+    session[:forwarding_url] = request.original_url if request.get?
+  end
 end
