@@ -87,7 +87,7 @@ RSpec.describe 'users edit', type: :system do
     end
   end
 
-  context 'when user try to delete himiself' do
+  context 'when user try to delete himself' do
     it 'cannot be completed without login' do
       visit user_path(user)
       expect(page).to have_selector 'div.alert-danger'

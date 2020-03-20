@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'user profile', type: :system do
-  include ApplicationHelper
 
   let(:user) {
     create(:user,

@@ -9,6 +9,7 @@
     </section>
   </aside>
   <div class="col-md-8">
+    <%= link_to '新たに施設を追加する', new_facility_path, class: 'btn btn-warning' %>
     <% if @user.facilities.any? %>
       <h3>現在<%= @user.facilities.count %>つの施設を管理しています</h3>
       <ol class="facilities">
