@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create!(name:  "Example User",
+             email: "example@kidsvillage.com",
+             password:              "password",
+             password_confirmation: "password")
+
+10.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@kidsvillage.com"
+  password = "password"
+  User.create!(name:  name,
+               email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+users = User.order(:created_at).take(6)
+facility_names = ['Kids Duo', 'Los Ninos', 'はなまる', 'Play with us', 'もとーれ']
+users.each do |user|
+  facility_names.each do |facility_name|
+    user.facilities.create!(name: facility_name)
+  end
+end

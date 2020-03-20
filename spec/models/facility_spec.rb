@@ -10,28 +10,25 @@ RSpec.describe Facility, type: :model do
            admin: true)
   }
 
-  let(:facility) {
-    create(:facility,
-           name: 'Kids Duo',
-           user_id: user.id)
-  }
-
   it 'is valid with name and user id' do
+    facility = user.facilities.build(name: 'Kids Duo')
     expect(facility).to be_valid
   end
 
   it 'is invalid without name' do
-    facility.name = ' '
+    facility = user.facilities.build(name: '')
     expect(facility).to be_invalid
   end
 
   it 'is invalid with name more than 50 letters' do
-    facility.name = 'a' * 51
+    facility = user.facilities.build(name: 'a' * 51)
     expect(facility).to be_invalid
   end
 
   it 'is invalid without user id' do
+    facility = user.facilities.build(name: 'Kids Duo')
     facility.user_id = nil
     expect(facility).to be_invalid
   end
+
 end
