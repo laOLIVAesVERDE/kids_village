@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase }
   mount_uploader :image, ImageUploader
-  
+  has_many :facilities, dependent: :destroy
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :name, presence: true,
                    length: {maximum: 50}
