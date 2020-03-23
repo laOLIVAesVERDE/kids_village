@@ -21,7 +21,6 @@ RSpec.describe 'facility access control', type: :system do
 
     it "cannot see user's facilities detail" do
       facility = user.facilities.create(name: 'Kids Duo')
-      p facility.id
       visit facility_path(facility)
       expect(page).to have_selector 'div.alert-danger'
       expect(page).to have_content 'ログイン'

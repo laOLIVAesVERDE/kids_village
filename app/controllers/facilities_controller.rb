@@ -19,6 +19,21 @@ class FacilitiesController < ApplicationController
     end
   end
 
+  def edit
+    @facility = Facility.find(params[:id])
+  end
+
+  def update
+    @facility = Facility.find(params[:id])
+    if @facility.update_attributes(facility_params)
+      flash[:success] = "名前を変更しました"
+      redirect_to user_path(current_user)
+    else
+      flash[:danger] = '変更できませんでした'
+      render 'edit'
+    end
+  end
+
   def destroy
     @facility = Facility.find(params[:id])
     name = @facility.name
