@@ -1,5 +1,6 @@
 class FacilitiesController < ApplicationController
-  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def show
     @facility = Facility.find(params[:id])
@@ -47,4 +48,11 @@ class FacilitiesController < ApplicationController
     def facility_params
       params.require(:facility).permit(:name)
     end
+
+    def correct_user
+      @user = Facility.find(params[:id]).user
+      #current_userメソッドの返り値と比較
+      redirect_to root_url unless current_user?(@user)
+    end
+
 end

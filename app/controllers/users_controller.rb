@@ -59,7 +59,7 @@ class UsersController < ApplicationController
                                    :image)
     end
 
-    
+
 
     def correct_user
       @user = User.find(params[:id])
