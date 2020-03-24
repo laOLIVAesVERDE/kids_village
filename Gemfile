@@ -15,6 +15,7 @@ gem 'rails-i18n'
 gem 'jquery-rails'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'faker'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -49,7 +50,6 @@ group :development, :test do
   gem 'sqlite3', '1.3.13'
   gem 'rspec-rails', '~> 3.8'
   gem 'factory_bot_rails'
-  gem 'faker'
   gem 'spring-commands-rspec'
 end
 
