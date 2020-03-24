@@ -83,4 +83,9 @@ RSpec.describe User, type: :model do
     user.facilities.create(name: 'Kids Duo')
     expect{ user.destroy }.to change{ Facility.count }.by(-1)
   end
+
+  it 'should have profile image whose size is less than 5MB' do
+    user.image = '../support/DSC_1479.JPG'
+    expect(user).not_to be_invalid
+  end
 end
