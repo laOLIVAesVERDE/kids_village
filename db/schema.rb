@@ -29,8 +29,10 @@ ActiveRecord::Schema.define(version: 20200328041721) do
     t.integer "facility_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+
+    t.index ["facility_id", "created_at"], name: "index_kids_on_facility_id_and_created_at"
     t.index ["facility_id"], name: "index_kids_on_facility_id"
-    t.index [nil, "created_at"], name: "index_kids_on_user_id_and_created_at"
+
   end
 
   create_table "users", force: :cascade do |t|
