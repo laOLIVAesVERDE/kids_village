@@ -20,10 +20,28 @@ User.create!(name:  "Example User",
                password_confirmation: password)
 end
 
-users = User.order(:created_at).take(6)
+users = User.order(:created_at).take(10)
+
 facility_names = ['Kids Duo', 'Los Ninos', 'はなまる', 'Play with us', 'もとーれ']
+school_names = ['本田第一小学校', '本田第二小学校', '川崎小学校', '山葉小学校']
+
 users.each do |user|
+
   facility_names.each do |facility_name|
     user.facilities.create!(name: facility_name)
+  end
+
+  user.facilities.each do |facility|
+    5.times do |n|
+      name  = Faker::Name.name
+      school = school_names.shuffle.first
+      email = "example-#{n+1}@kidsvillage.com"
+      introduction = "こんにちは。私の名前は" + name + "です。\n" + school + "に通っています。"
+      facility.kids.create!(name:  name,
+                           school: school,
+                           email: email,
+                           introduction: introduction)
+
+    end
   end
 end
