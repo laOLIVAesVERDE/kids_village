@@ -42,6 +42,7 @@ RSpec.describe 'users edit', type: :system do
     it 'can be completed with valid attributes' do
       fill_in 'お名前', with: 'civic'
       fill_in 'メールアドレス', with: 'civic@example.com'
+      #attach_file 'プロフィール画像', with: "#{Rails.root}/spec/support/2c491f0c9d64e1af106ad0cdfc8abc39.jpeg"
       fill_in 'パスワード', with: '12242339'
       fill_in 'パスワード（確認）', with: '12242339'
       click_button '保存する'

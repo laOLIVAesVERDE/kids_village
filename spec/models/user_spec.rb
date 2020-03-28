@@ -6,6 +6,7 @@ RSpec.describe User, type: :model do
     create(:user,
            name: 's2000',
            email: 's2000@example.com',
+           image: "#{Rails.root}/spec/support/test.jpg",
            password: '12242339',
            password_confirmation: '12242339',
            admin: true)
@@ -85,7 +86,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'should have profile image whose size is less than 5MB' do
-    user.image = '../support/DSC_1479.JPG'
+    user.image = "#{Rails.root}/spec/support/DSC_1479.jpg"
     expect(user).not_to be_invalid
   end
 end
