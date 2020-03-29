@@ -1,2 +1,13 @@
 <% provide(:title, @facility.name )%>
-<h3>この施設には現在〜人の児童が所属しています</h3>
+
+<div class="row">
+  <div class="col-md-8">
+    <%= link_to '新たに子どもを追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %>
+    <% if @facility.kids.any? %>
+      <h3>現在<%= @facility.kids.count %>人の児童が所属しています</h3>
+      <ol class="kids">
+        <%= render @kids %>
+      </ol>
+    <% end %>
+  </div>
+</div>

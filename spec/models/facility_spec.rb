@@ -31,4 +31,14 @@ RSpec.describe Facility, type: :model do
     expect(facility).to be_invalid
   end
 
+  it 'should not have any kid when the facility is deleted' do
+    facility = user.facilities.create(name: 'Kids Duo')
+    kid = facility.kids.create(name: '本田　太郎',
+                               school: '第一小学校',
+                               email: 'honda_taro@kidsvillage.com',
+                               introduction: 'こんにちは！')
+
+    expect{ facility.destroy }.to change{ Kid.count }.by(-1)
+  end
+
 end

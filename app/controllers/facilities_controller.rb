@@ -4,6 +4,7 @@ class FacilitiesController < ApplicationController
 
   def show
     @facility = Facility.find(params[:id])
+    @kids = @facility.kids
   end
 
   def new
