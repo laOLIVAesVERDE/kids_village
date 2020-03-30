@@ -1,0 +1,24 @@
+<% provide(:title, '児童追加') %>
+<h1>児童追加</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@kid, url: facility_kids_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form_control' %>
+
+      <%= f.label :school %>
+      <%= f.text_field :school, class: 'form_control' %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'form_control' %>
+
+      <%= f.label :introduction %>
+      <%= f.text_area :introduction, class: 'form_control' %>
+
+
+      <%= f.submit "児童を追加する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<% provide(:title, @kid.name) %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">お名前</th>
+        <td><%= @kid.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">学校</th>
+        <td><%= @kid.school %></td>
+      </tr>
+      <tr>
+        <th scope="row">メールアドレス</th>
+        <td><%= @kid.email %></td>
+      </tr>
+      <tr>
+        <th scope="row">自己紹介</th>
+        <td><%= @kid.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>

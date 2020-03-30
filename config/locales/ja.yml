@@ -16,6 +16,12 @@ ja:
         image: プロフィール画像
       facility:
         name: 施設名
+      kid:
+        name: お名前
+        school: 学校
+        email: メールアドレス
+        introduction: 自己紹介
+
   date:
     abbr_day_names:
     - 日

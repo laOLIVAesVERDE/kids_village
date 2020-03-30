@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
-  resources :facilities, only: [:show, :edit, :new, :create, :update, :destroy]
+  resources :facilities, only: [:show, :edit, :new, :create, :update, :destroy] do
+    resources :kids, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
