@@ -141,7 +141,6 @@ RSpec.describe 'kid access control spec', type: :system do
     end
 
     it 'can see kid detail' do
-      p page.html
       click_link kid_name
       expect(page).to have_title full_title(kid_name)
     end
