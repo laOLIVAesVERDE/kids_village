@@ -1,5 +1,6 @@
 class KidsController < ApplicationController
   before_action :logged_in_user, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :correct_user, only: [:show, :edit, :update, :destroy]
 
   def show
     @kid = Kid.find(params[:id])
@@ -27,10 +28,10 @@ class KidsController < ApplicationController
 
   def update
     @kid = Kid.find(params[:id])
-    facility = Facility.find(params[:facility_id])
+    @facility = Facility.find(params[:facility_id])
     if @kid.update_attributes(kid_params)
       flash[:success] = "児童情報を変更しました"
-      redirect_to facility_path(facility)
+      redirect_to facility_path(@facility)
     else
       flash[:danger] = '変更できませんでした'
       render 'edit'
@@ -51,6 +52,12 @@ class KidsController < ApplicationController
     def kid_params
       params.require(:kid).permit(:name, :school, :email, :introduction)
     end
+
+    def correct_user
+      @user = Kid.find(params[:id]).facility.user
+      redirect_to root_url unless current_user?(@user)
+    end
+
 
 
 end

@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%= link_to '新たに子どもを追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %>
+    <%= link_to '新たに児童を追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %>
     <% if @facility.kids.any? %>
       <h3>現在<%= @facility.kids.count %>人の児童が所属しています</h3>
       <ol class="kids">
