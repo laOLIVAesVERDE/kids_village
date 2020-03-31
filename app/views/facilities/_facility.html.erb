@@ -5,4 +5,8 @@
     <%= link_to '削除する', facility, method: :delete, class: "btn btn-danger",
           data: {confirm: '本当に削除してもよろしいですか？'} %>
   <% end %>
+  <form class="button_to" method="get" action="/facilities/<%= facility.id %>">
+    <input type="submit" value="児童用のページを開く" />
+    <input type="hidden" name="for_kid">
+  </form>
 </li>
