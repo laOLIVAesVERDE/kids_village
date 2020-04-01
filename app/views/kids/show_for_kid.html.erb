@@ -1,0 +1,28 @@
+<% provide(:title, @kid.name) %>
+<div class="row">
+  <% if request.url.include?('for_kid') %>
+  <div class="col-md-6 col-md-offset-3">
+  <table class="table table-striped">
+    <tbody>
+      <tr>
+        <th scope="row">お名前</th>
+        <td><%= @kid.name %></td>
+      </tr>
+      <tr>
+        <th scope="row">学校</th>
+        <td><%= @kid.school %></td>
+      </tr>
+      <tr>
+        <th scope="row">自己紹介</th>
+        <td><%= @kid.introduction %></td>
+      </tr>
+    </tbody>
+  </table>
+  <form class="button_to" method="get" action="/facilities/<%= @facility.id %>/kids/<%= @kid.id %>/edit">
+    <input type="submit" value="自己紹介を変えたい" />
+    <input type="hidden" name="for_kid">
+  </form>
+  <% end %>
+  </div>
+  </div>
+</div>
