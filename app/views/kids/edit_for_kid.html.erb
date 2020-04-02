@@ -11,6 +11,7 @@
       <%= f.label :introduction %>
       <%= f.text_area :introduction, class: 'form_control' %>
 
+      <%= hidden_field_tag :for_kid, " " %>
       <%= f.submit "保存する", class: "btn btn-primary" %>
     <% end %>
   </div>
