@@ -9,7 +9,7 @@
   </head>
 
   <body>
-  <% if request.url.include?('for_kid') %>
+  <% if request.url.include?('for_kid') or params[:for_kid] %>
   <div class="container">
     <%= yield %>
   </div>

@@ -22,6 +22,10 @@
     <input type="submit" value="自己紹介を変えたい" />
     <input type="hidden" name="for_kid">
   </form>
+  <form class="button_to" method="get" action="/facilities/<%= @facility.id %>">
+    <input type="submit" value="戻る" />
+    <input type="hidden" name="for_kid">
+  </form>
   <% end %>
   </div>
   </div>

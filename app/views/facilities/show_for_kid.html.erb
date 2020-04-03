@@ -7,7 +7,7 @@
         <% if request.url.include?('for_kid') %>
           <% for kid in @kids %>
           <li id="kid-<%= kid.id %>">
-            <span class="kid_name"><%= link_to kid.name, facility_kid_path(@facility, kid) %></span>
+            <span class="kid_name"><%= kid.name %></span>
             <form class="button_to" method="get" action="/facilities/<%= @facility.id %>/kids/<%= kid.id %>">
               <input type="submit" value="選択する" />
               <input type="hidden" name="for_kid">
@@ -19,5 +19,6 @@
 
       </ol>
     <% end %>
+
   </div>
 </div>
