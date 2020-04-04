@@ -4,6 +4,10 @@ class KidsController < ApplicationController
 
   def show
     @kid = Kid.find(params[:id])
+    @facility = Facility.find(params[:facility_id])
+    if params[:for_kid] or request.referer.include?('for_kid')
+      render 'show_for_kid'
+    end
   end
 
   def new
@@ -24,14 +28,22 @@ class KidsController < ApplicationController
   def edit
     @kid = Kid.find(params[:id])
     @facility = Facility.find(params[:facility_id])
+    if params[:for_kid]
+      render 'edit_for_kid'
+    end
   end
 
   def update
     @kid = Kid.find(params[:id])
     @facility = Facility.find(params[:facility_id])
     if @kid.update_attributes(kid_params)
-      flash[:success] = "児童情報を変更しました"
-      redirect_to facility_path(@facility)
+      if params[:for_kid]
+        flash.now[:success] = "児童情報を変更しました"
+        render 'after_edit_for_kid'
+      else
+        flash[:success] = "児童情報を変更しました"
+        redirect_to facility_path(@facility)
+      end
     else
       flash[:danger] = '変更できませんでした'
       render 'edit'

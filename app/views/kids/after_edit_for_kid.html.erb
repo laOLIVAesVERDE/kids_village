@@ -1,0 +1,10 @@
+<div class="container">
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+  <% end %>
+
+  <form class="button_to" method="get" action="/facilities/<%= params[:facility_id] %>">
+    <input type="submit" value="戻る" />
+    <input type="hidden" name="for_kid">
+  </form>
+</div>

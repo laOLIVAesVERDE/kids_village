@@ -9,11 +9,14 @@
   </head>
 
   <body>
+  <% if request.url.include?('for_kid') or params[:for_kid] %>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <% else %>
     <header class="navbar navbar-fixed-top navbar-inverse">
      <div class="container">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
+
        <%= link_to "Kids Village", root_path, id: "logo" %>
        <nav>
          <ul class="nav navbar-nav navbar-right">
@@ -41,6 +44,9 @@
      </div>
    </header>
    <div class="container">
+     <% flash.each do |message_type, message| %>
+       <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+     <% end %>
      <%= yield %>
      <footer>
        <nav>
@@ -53,6 +59,7 @@
      </footer>
      <%= debug(params) if Rails.env.development? %>
    </div>
+  <% end %>
   </body>
 
 </html>

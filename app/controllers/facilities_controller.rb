@@ -5,6 +5,9 @@ class FacilitiesController < ApplicationController
   def show
     @facility = Facility.find(params[:id])
     @kids = @facility.kids
+    if params[:for_kid]
+      render 'show_for_kid'
+    end
   end
 
   def new
@@ -55,5 +58,6 @@ class FacilitiesController < ApplicationController
       #current_userメソッドの返り値と比較
       redirect_to root_url unless current_user?(@user)
     end
+
 
 end
