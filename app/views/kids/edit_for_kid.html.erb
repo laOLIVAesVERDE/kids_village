@@ -18,7 +18,7 @@
       <%= f.submit "保存する", class: "btn btn-primary" %>
 
     <% end %>
-    <form class="button_to" method="get" action="/facilities/<%= @facility.id %>">
+    <form class="button_to" method="get" action="/facilities/<%= @facility.id %>/kids/<%= @kid.id %>">
       <input type="submit" value="戻る" />
       <input type="hidden" name="for_kid">
     </form>
