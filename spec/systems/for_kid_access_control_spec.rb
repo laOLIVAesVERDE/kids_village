@@ -110,6 +110,30 @@ RSpec.describe 'for kid access control', type: :system do
       expect(page).to have_button '選択する'
     end
 
+    it 'can send back_from_school email' do
+      click_on '選択する'
+      expect(page).to have_button '学校から戻りました!'
+      click_on '学校から戻りました!'
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+      expect(ActionMailer::Base.deliveries.first.to).to eq [kid_params_for_create[:email]]
+      expect(page).to have_selector 'div.alert-success'
+      expect(page).to have_button '戻る'
+      click_on '戻る'
+      expect(page).to have_button '選択する'
+    end
+
+    it 'can send back_from_school email' do
+      click_on '選択する'
+      expect(page).to have_button '宿題が終わりました!'
+      click_on '宿題が終わりました!'
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+      expect(ActionMailer::Base.deliveries.first.to).to eq [kid_params_for_create[:email]]
+      expect(page).to have_selector 'div.alert-success'
+      expect(page).to have_button '戻る'
+      click_on '戻る'
+      expect(page).to have_button '選択する'
+    end
+
 
   end
 

@@ -1,5 +1,8 @@
 <% provide(:title, @kid.name) %>
 <div class="row">
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+  <% end %>
   <% if request.url.include?('for_kid') %>
   <div class="col-md-6 col-md-offset-3">
   <table class="table table-striped">
@@ -22,6 +25,18 @@
     <input type="submit" value="自己紹介を変えたい" />
     <input type="hidden" name="for_kid">
   </form>
+
+  <%= form_tag(facility_kid_back_from_schools_path(@facility, @kid), method: :post) do %>
+    <%= hidden_field_tag :for_kid, " " %>
+    <%= submit_tag "学校から戻りました!" %>
+  <% end %>
+
+  <%= form_tag(facility_kid_finish_homeworks_path(@facility, @kid), method: :post) do %>
+    <%= hidden_field_tag :for_kid, " " %>
+    <%= submit_tag "宿題が終わりました!" %>
+  <% end %>
+
+
   <form class="button_to" method="get" action="/facilities/<%= @facility.id %>">
     <input type="submit" value="戻る" />
     <input type="hidden" name="for_kid">
