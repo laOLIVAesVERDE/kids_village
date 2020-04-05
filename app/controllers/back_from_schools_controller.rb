@@ -10,5 +10,5 @@ class BackFromSchoolsController < ApplicationController
       render 'kids/after_action_for_kid'
     end
   end
-  
+
 end
