@@ -39,7 +39,7 @@ class KidsController < ApplicationController
     if @kid.update_attributes(kid_params)
       if params[:for_kid]
         flash.now[:success] = "児童情報を変更しました"
-        render 'after_edit_for_kid'
+        render 'after_action_for_kid'
       else
         flash[:success] = "児童情報を変更しました"
         redirect_to facility_path(@facility)
