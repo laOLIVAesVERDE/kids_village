@@ -3,15 +3,17 @@
   <aside class="col-md-4">
     <section class="user_info">
       <h1>
-        <%= image_tag @user.image.thumb.url, :class => "thumbnail thumbnail_edit" %>
+        <%= image_tag @user.image.icon.url, :class => "thumbnail thumbnail_edit" %>
         <%= @user.name %>
       </h1>
     </section>
   </aside>
-  <div class="col-md-8">
-    <%= link_to '新たに施設を追加する', new_facility_path, class: 'btn btn-warning' %>
+  <div class="col-sm-12">
+    <hr>
     <% if @user.facilities.any? %>
+      <p class="right"><%= link_to '新たに施設を追加する', new_facility_path, class: 'btn btn-warning' %></p>
       <h3>現在<%= @user.facilities.count %>つの施設を管理しています</h3>
+      <br>
       <ol class="facilities">
         <%= render @facilities %>
       </ol>

@@ -1,8 +1,6 @@
 <li id="kid-<%= kid.id %>">
+  <%= link_to image_tag("edit_icon.png"), edit_facility_kid_path(@facility, kid), class: "right" %>
+
   <span class="kid_name"><%= link_to kid.name, facility_kid_path(@facility, kid) %></span>
-  <%= link_to "編集する", edit_facility_kid_path(@facility, kid), class: "btn btn-primary" %>
-  <% if current_user?(kid.facility.user) %>
-    <%= link_to '削除する', facility_kid_path(@facility, kid), method: :delete, class: "btn btn-danger",
-          data: {confirm: '本当に削除してもよろしいですか？'} %>
-  <% end %>
+  
 </li>

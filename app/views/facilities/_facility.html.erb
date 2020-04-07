@@ -1,10 +1,6 @@
 <li id="facility-<%= facility.id %>">
-  <span class="facility_name"><%= link_to facility.name, facility_path(facility) %></span>
-  <%= link_to "編集する", edit_facility_path(facility), class: "btn btn-primary" %>
-  <% if current_user?(facility.user) %>
-    <%= link_to '削除する', facility, method: :delete, class: "btn btn-danger",
-          data: {confirm: '本当に削除してもよろしいですか？'} %>
-  <% end %>
+  <h3 class="facility_name"><%= link_to facility.name, facility_path(facility) %></h3>
+  <p>所属　<%= facility.kids.count %>人</p>
   <form class="button_to" target="_blank" method="get" action="/facilities/<%= facility.id %>">
     <input type="submit" value="児童用のページを開く" />
     <input type="hidden" name="for_kid">

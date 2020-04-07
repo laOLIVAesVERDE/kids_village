@@ -2,9 +2,17 @@
 
 <div class="row">
   <div class="col-md-8">
-    <%= link_to '新たに児童を追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %>
+    <h3><%= @facility.name %></h3>
+    <p><%= link_to "編集する", edit_facility_path(@facility), class: "btn btn-primary" %></p>
+    <form class="button_to" target="_blank" method="get" action="/facilities/<%= @facility.id %>">
+      <input type="submit" value="児童用のページを開く" />
+      <input type="hidden" name="for_kid">
+    </form>
+    <hr>
     <% if @facility.kids.any? %>
+      <p class="right"><%= link_to '新たに児童を追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %></p>
       <h3>現在<%= @facility.kids.count %>人の児童が所属しています</h3>
+      <br>
       <ol class="kids">
         <%= render @kids %>
       </ol>
