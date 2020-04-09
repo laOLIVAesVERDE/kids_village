@@ -1,8 +1,9 @@
-<li id="facility-<%= facility.id %>">
-  <h3 class="facility_name"><%= link_to facility.name, facility_path(facility) %></h3>
-  <p>所属　<%= facility.kids.count %>人</p>
-  <form class="button_to" target="_blank" method="get" action="/facilities/<%= facility.id %>">
-    <input type="submit" value="児童用のページを開く" />
+<li>
+  <h3 class="facility_name" style="display:inline;"><%= link_to facility.name, facility_path(facility) %></h3>
+  <form target="_blank" method="get" action="/facilities/<%= facility.id %>">
+    <input type="submit" class="btn btn-success col-xs-3 right" value="児童用のページを開く" />
     <input type="hidden" name="for_kid">
   </form>
+  <p>所属　<%= facility.kids.count %>人</p>
+
 </li>

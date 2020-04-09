@@ -1,7 +1,7 @@
 <% provide(:title, @facility.name )%>
 
-<div class="row">
-  <div class="col-md-8">
+
+    <!--
     <% if @facility.kids.any? %>
       <ol class="kids">
         <% if request.url.include?('for_kid') %>
@@ -19,6 +19,18 @@
 
       </ol>
     <% end %>
-
-  </div>
-</div>
+-->
+    <div class="box row">
+      <h4>自分の名前を選んでね</h4>
+      <hr>
+      <% if @facility.kids.any? %>
+          <% if request.url.include?('for_kid') %>
+            <% for kid in @kids %>
+              <form class="col-xs-6 col-sm-3" method="get" action="/facilities/<%= @facility.id %>/kids/<%= kid.id %>">
+                <input type="submit" class="kid_name btn btn-primary" value="<%= kid.name %>" />
+                <input type="hidden" name="for_kid">
+              </form>
+            <% end %>
+          <% end %>
+      <% end %>
+    </div>

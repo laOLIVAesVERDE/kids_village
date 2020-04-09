@@ -1,21 +1,40 @@
 <% provide(:title, @facility.name )%>
 
 <div class="row">
-  <div class="col-md-8">
+
     <h3><%= @facility.name %></h3>
-    <p><%= link_to "編集する", edit_facility_path(@facility), class: "btn btn-primary" %></p>
-    <form class="button_to" target="_blank" method="get" action="/facilities/<%= @facility.id %>">
-      <input type="submit" value="児童用のページを開く" />
-      <input type="hidden" name="for_kid">
-    </form>
+
+
+    <div class="facility_button_wrapper">
+      <%= link_to "編集する", edit_facility_path(@facility), class: "btn btn-primary col-xs-3" %>
+
+      <form target="_blank" method="get" action="/facilities/<%= @facility.id %>">
+        <input type="submit" class="btn btn-success col-xs-3" value="児童用のページを開く" />
+        <input type="hidden" name="for_kid">
+      </form>
+    </div>
+
+    <br clear="">
     <hr>
     <% if @facility.kids.any? %>
+      <h3 style="display:inline;">現在<%= @facility.kids.count %>人の児童が所属しています</h3>
       <p class="right"><%= link_to '新たに児童を追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %></p>
-      <h3>現在<%= @facility.kids.count %>人の児童が所属しています</h3>
       <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>学校</th>
+            <th>メールアドレス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @kids %>
+        </tbody>
+      </table>
       <ol class="kids">
-        <%= render @kids %>
       </ol>
     <% end %>
-  </div>
+
 </div>
