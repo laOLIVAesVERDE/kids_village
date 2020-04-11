@@ -69,6 +69,7 @@ RSpec.describe 'facility access control', type: :system do
       fill_in '施設名', with: facility_name
       click_button '施設を追加する'
       expect(page).to have_content facility_name
+      expect(page).to have_button '児童用のページを開く'
     end
 
     it "cannot see other user's facility detail" do
@@ -100,10 +101,13 @@ RSpec.describe 'facility access control', type: :system do
 
     it 'can see facility detail' do
       click_link facility_name
+      expect(page).to have_link '編集する'
+      expect(page).to have_button '児童用のページを開く'
       expect(page).to have_title full_title(facility_name)
     end
 
     it 'cannot edit facility without name' do
+      click_link facility_name
       click_link '編集する'
       fill_in '施設名', with: ' '
       click_button '保存する'
@@ -112,6 +116,7 @@ RSpec.describe 'facility access control', type: :system do
     end
 
     it 'can edit facility with name' do
+      click_link facility_name
       click_link '編集する'
       fill_in '施設名', with: 'Sakura'
       click_button '保存する'
@@ -120,6 +125,8 @@ RSpec.describe 'facility access control', type: :system do
     end
 
     it 'can destroy facility' do
+      click_link facility_name
+      click_link '編集する'
       click_link '削除する'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_selector 'div.alert-success'

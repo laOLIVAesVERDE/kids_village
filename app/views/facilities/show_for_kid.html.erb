@@ -1,25 +1,7 @@
 <% provide(:title, @facility.name )%>
 
 
-    <!--
-    <% if @facility.kids.any? %>
-      <ol class="kids">
-        <% if request.url.include?('for_kid') %>
-          <% for kid in @kids %>
-          <li id="kid-<%= kid.id %>">
-            <span class="kid_name"><%= kid.name %></span>
-            <form class="button_to" method="get" action="/facilities/<%= @facility.id %>/kids/<%= kid.id %>">
-              <input type="submit" value="選択する" />
-              <input type="hidden" name="for_kid">
-            </form>
-          </li>
-          <% end %>
 
-        <% end%>
-
-      </ol>
-    <% end %>
--->
     <div class="box row">
       <h4>自分の名前を選んでね</h4>
       <hr>

@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+
 /* mixins, variables, etc. */
 
 $gray-medium-light: #eaeaea;
@@ -51,7 +53,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray-light;
+  color: black;
 }
 
 p {
@@ -66,7 +68,7 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: black;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -80,6 +82,14 @@ p {
 .nav {
   float: right;
   display: inline-block;
+}
+.navbar-inverse {
+  background-color: #EFDF7D;
+  border-color: #EFDF7D;
+}
+
+.navbar-nav {
+    color: black;
 }
 
 
@@ -270,8 +280,13 @@ span.picture {
   }
 }
 
+pre {
+  background-color: transparent;
+  border: 0px;
+}
 
-/* for kid */
+
+/* show for kid: facility */
 .box {
     padding: 0.5em 1em;
     margin: 2em 0;
@@ -289,4 +304,69 @@ span.picture {
     .kid_name {
       font-size: large;
     }
+}
+
+/* show for kid: kid */
+.back_icon {
+  input {
+    width: 10%;
+    margin-left: 10%;
+    border: 0px;
+  }
+}
+
+
+.kids_info_wrapper {
+  text-align: center;
+  h2 {
+    margin-bottom: 10px;
+    font-size: 3.5em;
+    letter-spacing: -1px;
+    text-align: center;
+    font-weight: normal;
+  }
+  pre {
+    background-color: transparent;
+    border: 0px;
+  }
+  .badge {
+    background-color: #58A7D2;
+  }
+}
+
+.action_wrapper {
+  margin: 40px 80px 100px;
+  padding: 0px 50px;
+  input {
+    margin: 0px 15px;
+  }
+}
+
+.mail_button_wrapper {
+  margin-bottom: 100px;
+}
+
+.diary_button_wrapper {
+  margin-bottom: 100px;
+}
+
+.introduction_button_wrapper {
+  margin-bottom: 200px;
+}
+
+/* edit for kid: kid */
+.edit_for_kid {
+  textarea {
+    height: 200px;
+  }
+}
+
+/* after action for kid: kid */
+.back_home {
+  padding: 0px 100px;
+  text-align: center;
+  input {
+    width: 10%;
+    border: 0px;
+  }
 }

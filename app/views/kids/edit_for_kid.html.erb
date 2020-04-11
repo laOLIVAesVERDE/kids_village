@@ -1,27 +1,31 @@
 <% provide(:title, "児童情報変更") %>
-<h1>児童情報変更</h1>
 
-<div class="row">
+
+<div class="row edit_for_kid">
   <% flash.each do |message_type, message| %>
     <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
   <% end %>
+
+  <form class="back_icon" method="get" action="/facilities/<%= params[:facility_id] %>/kids/<%= params[:id] %>">
+    <%= image_submit_tag("back_icon.png")%>
+    <input type="hidden" name="for_kid">
+  </form>
+
+
+  <h1>自己紹介を書いてね！</h1>
+
   <% if request.url.include?('for_kid') %>
   <div class="col-md-6 col-md-offset-3">
     <%= form_for [@facility, @kid] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-
-      <%= f.label :introduction %>
       <%= f.text_area :introduction, class: 'form_control' %>
 
       <%= hidden_field_tag :for_kid, " " %>
-      <%= f.submit "保存する", class: "btn btn-primary" %>
+      <%= f.submit "自己紹介を変える！", class: "btn btn-primary" %>
 
     <% end %>
-    <form class="button_to" method="get" action="/facilities/<%= @facility.id %>/kids/<%= @kid.id %>">
-      <input type="submit" value="戻る" />
-      <input type="hidden" name="for_kid">
-    </form>
+
   </div>
   <% end %>
 </div>

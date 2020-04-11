@@ -92,6 +92,8 @@ RSpec.describe 'kid access control spec', type: :system do
 
     it 'cannot create kid without invalid input' do
       click_link '新たに児童を追加する'
+      sleep(2)
+      expect(page).to have_content 'お名前'
       fill_in 'お名前', with: ' '
       fill_in '学校', with: ' '
       fill_in 'メールアドレス', with: ' '
@@ -146,7 +148,7 @@ RSpec.describe 'kid access control spec', type: :system do
     end
 
     it 'cannot edit with invalid input' do
-      click_link '編集する'
+      find('.edit_icon').click
       fill_in 'お名前', with: ' '
       fill_in '学校', with: ' '
       fill_in 'メールアドレス', with: ' '
@@ -157,7 +159,7 @@ RSpec.describe 'kid access control spec', type: :system do
     end
 
     it 'can edit kid with valid input' do
-      click_link '編集する'
+      find('.edit_icon').click
       edit_name = '山葉 太郎'
       fill_in 'お名前', with: edit_name
       fill_in '学校', with: '山葉小学校'
@@ -169,6 +171,7 @@ RSpec.describe 'kid access control spec', type: :system do
     end
 
     it 'can destroy kid' do
+      find('.edit_icon').click
       click_link '削除する'
       page.driver.browser.switch_to.alert.accept
       expect(page).to have_selector 'div.alert-success'

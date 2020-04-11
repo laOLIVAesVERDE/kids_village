@@ -45,12 +45,13 @@ RSpec.describe 'users login', type: :system do
         expect(page).not_to have_link nil, href: login_path
       end
       it "page has link to profile and logout in the account dropdown" do
-        click_link "アカウント"
-        expect(page).to have_link "プロフィール", href: user_path(user)
+        find('.trim').click
+        expect(page).to have_link "管理画面トップ", href: user_path(user)
+        expect(page).to have_link "プロフィール設定", href: edit_user_path(user)
         expect(page).to have_link "ログアウト", href: logout_path
       end
       it 'can be logged out' do
-        click_link 'アカウント'
+        find('.trim').click
         click_link 'ログアウト'
         expect(page).to have_link 'ログイン', login_path
         expect(page).to have_selector 'div.alert-success'
