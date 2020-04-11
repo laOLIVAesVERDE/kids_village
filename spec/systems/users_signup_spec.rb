@@ -38,7 +38,7 @@ RSpec.describe 'users signup', type: :system do
     }.to change(User, :count).to(1)
     expect(page).to have_title full_title(user.name)
     expect(page).to have_selector 'div.alert-success'
-    click_link 'アカウント'
+    find('.trim').click
     expect(page).to have_link 'ログアウト', href: logout_path
   end
 

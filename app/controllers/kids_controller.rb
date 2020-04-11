@@ -38,7 +38,7 @@ class KidsController < ApplicationController
     @facility = Facility.find(params[:facility_id])
     if @kid.update_attributes(kid_params)
       if params[:for_kid]
-        flash.now[:success] = "児童情報を変更しました"
+        flash.now[:success] = "自己紹介を変えました!"
         render 'after_action_for_kid'
       else
         flash[:success] = "児童情報を変更しました"

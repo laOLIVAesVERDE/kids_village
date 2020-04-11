@@ -9,4 +9,8 @@ module TestHelper
     fill_in 'パスワード', with: user.password
     click_button 'ログイン'
   end
+
+  def take_screenshot
+    page.save_screenshot "screenshot-#{DateTime.now}.png"
+  end
 end
