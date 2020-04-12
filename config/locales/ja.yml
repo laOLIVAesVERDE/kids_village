@@ -21,6 +21,9 @@ ja:
         school: 学校
         email: メールアドレス
         introduction: 自己紹介
+      post:
+        title: タイトル
+        content: 内容
 
   date:
     abbr_day_names:

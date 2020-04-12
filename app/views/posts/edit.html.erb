@@ -1,0 +1,23 @@
+<% provide(:title, "日記更新") %>
+<h1>日記更新</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [@facility, @post] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form_control' %>
+
+      <%= f.label :content %>
+      <%= f.text_area :content, class: 'form_control' %>
+
+
+      <%= f.submit "保存する", class: "btn btn-primary" %>
+    <% end %>
+    <hr>
+    <% if current_user?(@post.facility.user) %>
+      <%= link_to '削除する', facility_post_path(@facility, @post), method: :delete, class: "btn btn-danger",
+            data: {confirm: '本当に削除してもよろしいですか？'} %>
+    <% end %>
+  </div>
+</div>

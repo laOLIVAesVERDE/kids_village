@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users
   resources :facilities, only: [:show, :edit, :new, :create, :update, :destroy] do
+    resources :posts, only: [:show, :new, :create, :edit, :update, :destroy]
     resources :kids, only: [:show, :new, :create, :edit, :update, :destroy] do
       resources :back_from_schools, only: [:create]
       resources :finish_homeworks, only: [:create]

@@ -25,6 +25,7 @@ section {
 
 textarea {
   resize: vertical;
+  height: 400px;
 }
 
 .center {
@@ -285,6 +286,10 @@ pre {
   border: 0px;
 }
 
+/* posts */
+.post_index {
+  margin-top: 40px;
+}
 
 /* show for kid: facility */
 .box {

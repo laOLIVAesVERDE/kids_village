@@ -1,0 +1,7 @@
+<tr class="table-info" id="post-<%= post.id %>">
+  <td class="post_name"><%= link_to post.title, facility_post_path(@facility, post) %></td>
+  <td><%= post.content[0..20] %>...</td>
+  <td>
+    <%= link_to image_tag("edit_icon.png"), edit_facility_post_path(@facility, post), class: "right edit_icon" %>
+  </td>
+</tr>
