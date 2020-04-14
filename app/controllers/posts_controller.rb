@@ -1,20 +1,31 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @facility = Facility.find(params[:facility_id])
+    @posts = @facility.posts.all
+    if params[:for_kid] or request.referer.include?('for_kid')
+      render 'index_for_kid'
+    end
+  end
 
   def show
     @post = Post.find(params[:id])
     @facility = Facility.find(params[:facility_id])
+    if params[:for_kid] or request.referer.include?('for_kid')
+      render 'show_for_kid'
+    end
   end
 
   def new
+    @facility = Facility.find(params[:facility_id])
     @post = Post.new
   end
 
   def create
-    i = 0
-    facility = Facility.find(params[:facility_id])
-    @post = facility.posts.build(post_params)
+    @facility = Facility.find(params[:facility_id])
+    @post = @facility.posts.build(post_params)
     #post.content.each_char do |c|
     #  i += 1
     #  if i % 40 == 0
@@ -22,8 +33,15 @@ class PostsController < ApplicationController
     #  end
     #end
     if @post.save
+      if params[:post].has_key?(:kid_ids)
+        kid_ids = params[:post][:kid_ids]
+        kid_ids.each do |kid_id|
+          kid = Kid.find_by(id: kid_id)
+          PostMailer.create_post(kid, @post.content)
+        end
+      end
       flash[:success] = "日記を作成しました"
-      redirect_to facility_path(facility)
+      redirect_to facility_path(@facility)
     else
       render 'new'
     end
@@ -58,7 +76,7 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :content)
+      params.require(:post).permit(:title, :content, :kid_ids)
     end
 
     def correct_user

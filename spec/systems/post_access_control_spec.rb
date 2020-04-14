@@ -86,16 +86,25 @@ RSpec.describe 'post access control spec', type: :system do
 
     it 'cannot create post without invalid input' do
       click_link '新たに日記を作成する'
-      sleep(2)
       expect(page).to have_content '日記作成'
       fill_in 'タイトル', with: ' '
       fill_in '内容', with: ' '
       click_button '日記を作成する'
+      expect(Post.count).to eq(0)
       expect(page).to have_selector 'div.field_with_errors'
       expect(page).to have_selector 'div#error_explanation'
     end
 
     it 'can create post with valid input' do
+      click_link '新たに日記を作成する'
+      fill_in 'タイトル', with: post_params_for_create[:title]
+      fill_in '内容', with: post_params_for_create[:content]
+      click_button '日記を作成する'
+      expect(page).to have_selector 'div.alert-success'
+      expect(page).to have_content(post_params_for_create[:name])
+    end
+
+    it 'can create post including kid select' do
       click_link '新たに日記を作成する'
       fill_in 'タイトル', with: post_params_for_create[:title]
       fill_in '内容', with: post_params_for_create[:content]
