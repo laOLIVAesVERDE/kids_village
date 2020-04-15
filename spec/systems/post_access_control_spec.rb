@@ -16,6 +16,21 @@ RSpec.describe 'post access control spec', type: :system do
            user_id: user.id)
   }
 
+  let(:kid_params_for_create) {
+    {name: '本田 太郎',
+     school: '本田第一小学校',
+     email: 'taro_honda@kidsvillage.com',
+     introduction: 'こんにちは'}
+  }
+
+  let(:other_kid_params_for_create) {
+    {name: '本田 花子',
+    school: '本田第二小学校',
+    email: 'hanako_honda@kidsvillage.com',
+    introduction: 'こんにちは'}
+  }
+
+
   let(:post_params_for_create) {
     {title: '今日の出来事',
      content: "今日は大山公園に行ってきました。"}
@@ -82,6 +97,18 @@ RSpec.describe 'post access control spec', type: :system do
     before do
       log_in_as(user)
       visit facility_path(facility)
+      create_kid(facility,
+                 kid_params_for_create[:name],
+                 kid_params_for_create[:school],
+                 kid_params_for_create[:email],
+                 kid_params_for_create[:introduction]
+      )
+      create_kid(facility,
+                 other_kid_params_for_create[:name],
+                 other_kid_params_for_create[:school],
+                 other_kid_params_for_create[:email],
+                 other_kid_params_for_create[:introduction]
+      )
     end
 
     it 'cannot create post without invalid input' do
@@ -101,17 +128,59 @@ RSpec.describe 'post access control spec', type: :system do
       fill_in '内容', with: post_params_for_create[:content]
       click_button '日記を作成する'
       expect(page).to have_selector 'div.alert-success'
-      expect(page).to have_content(post_params_for_create[:name])
+      expect(page).to have_content(post_params_for_create[:title])
+      expect(ActionMailer::Base.deliveries.size).to eq 0
     end
 
     it 'can create post including kid select' do
       click_link '新たに日記を作成する'
+      select kid_params_for_create[:name], from: 'post[kid_ids][]'
+      expect(page).to have_select('post[kid_ids][]',
+                                  selected: kid_params_for_create[:name])
       fill_in 'タイトル', with: post_params_for_create[:title]
       fill_in '内容', with: post_params_for_create[:content]
-      click_button '日記を作成する'
+      click_on '日記を作成する'
+      expect(ActionMailer::Base.deliveries.size).to eq 1
       expect(page).to have_selector 'div.alert-success'
-      expect(page).to have_content(post_params_for_create[:name])
+      expect(page).to have_content(post_params_for_create[:title])
     end
+
+    it 'can create post including kid select multiple' do
+      click_link '新たに日記を作成する'
+      select kid_params_for_create[:name], from: 'post[kid_ids][]'
+      select other_kid_params_for_create[:name], from: 'post[kid_ids][]'
+      expect(page).to have_select('post[kid_ids][]',
+                                  selected: [ kid_params_for_create[:name],
+                                  other_kid_params_for_create[:name] ])
+      fill_in 'タイトル', with: post_params_for_create[:title]
+      fill_in '内容', with: post_params_for_create[:content]
+      click_on '日記を作成する'
+      expect(ActionMailer::Base.deliveries.size).to eq 2
+      expect(page).to have_selector 'div.alert-success'
+      expect(page).to have_content(post_params_for_create[:title])
+    end
+
+    it 'can unselect kid' do
+      click_link '新たに日記を作成する'
+
+      select kid_params_for_create[:name], from: 'post[kid_ids][]'
+      select other_kid_params_for_create[:name], from: 'post[kid_ids][]'
+      expect(page).to have_select('post[kid_ids][]',
+                                  selected: [ kid_params_for_create[:name],
+                                  other_kid_params_for_create[:name] ])
+
+      unselect other_kid_params_for_create[:name], from: 'post[kid_ids][]'
+      expect(page).to have_select('post[kid_ids][]',
+                                  selected: kid_params_for_create[:name])
+
+      fill_in 'タイトル', with: post_params_for_create[:title]
+      fill_in '内容', with: post_params_for_create[:content]
+      click_on '日記を作成する'
+      expect(ActionMailer::Base.deliveries.size).to eq 1
+      expect(page).to have_selector 'div.alert-success'
+      expect(page).to have_content(post_params_for_create[:title])
+    end
+
 
     it 'cannot see other post detail' do
       visit facility_post_path(other_facility, other_post)

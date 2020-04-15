@@ -25,19 +25,14 @@ class PostsController < ApplicationController
 
   def create
     @facility = Facility.find(params[:facility_id])
-    @post = @facility.posts.build(post_params)
-    #post.content.each_char do |c|
-    #  i += 1
-    #  if i % 40 == 0
-    #    post.content.insert(i, "\r\n")
-    #  end
-    #end
+    @post = @facility.posts.build(title: post_params[:title],
+                                  content: post_params[:content])
     if @post.save
       if params[:post].has_key?(:kid_ids)
         kid_ids = params[:post][:kid_ids]
         kid_ids.each do |kid_id|
           kid = Kid.find_by(id: kid_id)
-          PostMailer.create_post(kid, @post.content)
+          PostMailer.create_post(kid, @post.content).deliver_now
         end
       end
       flash[:success] = "日記を作成しました"
@@ -76,8 +71,9 @@ class PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :content, :kid_ids)
+      params.require(:post).permit(:title, :content, kid_ids: [])
     end
+
 
     def correct_user
       @user = Post.find(params[:id]).facility.user
