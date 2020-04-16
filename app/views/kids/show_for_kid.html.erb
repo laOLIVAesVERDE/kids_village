@@ -36,21 +36,6 @@
       <% end %>
     </div>
 
-
-    <div class="diary_button_wrapper">
-      <h4>日記</h4>
-      <hr>
-      <form method="get" action="/facilities/<%= @facility.id %>/posts">
-        <input class="btn btn-primary col-xs-3 left" type="submit" value="見る" />
-        <input type="hidden" name="for_kid">
-      </form>
-
-      <%= form_tag(facility_kid_finish_homeworks_path(@facility, @kid), method: :post) do %>
-        <%= hidden_field_tag :for_kid, " " %>
-        <%= submit_tag "書く", class: "btn btn-primary col-xs-3 right" %>
-      <% end %>
-    </div>
-
     <div class="introduction_button_wrapper">
       <h4>自分のこと</h4>
       <hr>

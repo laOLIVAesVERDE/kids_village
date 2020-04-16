@@ -21,6 +21,9 @@ class PostsController < ApplicationController
   def new
     @facility = Facility.find(params[:facility_id])
     @post = Post.new
+    if params[:for_kid] or request.referer.include?('for_kid')
+      render 'new_for_kid'
+    end
   end
 
   def create
@@ -28,15 +31,20 @@ class PostsController < ApplicationController
     @post = @facility.posts.build(title: post_params[:title],
                                   content: post_params[:content])
     if @post.save
+
       if params[:post].has_key?(:kid_ids)
         kid_ids = params[:post][:kid_ids]
-        kid_ids.each do |kid_id|
-          kid = Kid.find_by(id: kid_id)
-          PostMailer.create_post(kid, @post.content).deliver_now
-        end
+        send_mail_after_create_post(kid_ids, @post)
       end
-      flash[:success] = "日記を作成しました"
-      redirect_to facility_path(@facility)
+
+
+      if params[:for_kid] or request.referer.include?('for_kid')
+        flash.now[:success] = "日記を作成しました"
+        render 'kids/after_action_for_kid'
+      else
+        flash[:success] = "日記を作成しました"
+        redirect_to facility_path(@facility)
+      end
     else
       render 'new'
     end
@@ -74,9 +82,15 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :content, kid_ids: [])
     end
 
-
     def correct_user
       @user = Post.find(params[:id]).facility.user
       redirect_to root_url unless current_user?(@user)
+    end
+
+    def send_mail_after_create_post(kid_ids, post)
+      kid_ids.each do |kid_id|
+        kid = Kid.find_by(id: kid_id)
+        PostMailer.create_post(kid, post.content).deliver_now
+      end
     end
 end

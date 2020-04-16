@@ -64,20 +64,12 @@ p {
 
 
 /* header */
-
-#logo {
+.logo {
   float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: black;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: white;
-    text-decoration: none;
-  }
+  margin: 15px 0px;
+  height: 30px;
+  width: 180px;
+  vertical-align: middle;
 }
 
 .nav {
@@ -85,8 +77,9 @@ p {
   display: inline-block;
 }
 .navbar-inverse {
-  background-color: #EFDF7D;
-  border-color: #EFDF7D;
+  background-color: #E0FFFF;
+  border-bottom-width: 2px;
+  border-color: #00A474;
 }
 
 .navbar-nav {
@@ -292,6 +285,12 @@ pre {
 }
 
 /* show for kid: facility */
+.logo_for_kid {
+  width: 1050px;
+  height: 450px;
+  margin: auto;
+}
+
 .box {
     padding: 0.5em 1em;
     margin: 2em 0;
@@ -311,7 +310,12 @@ pre {
     }
 }
 
-/* show for kid: kid */
+.diary_button_wrapper {
+  margin-bottom: 100px;
+}
+
+
+/* back icon */
 .back_icon {
   input {
     width: 10%;
@@ -320,7 +324,7 @@ pre {
   }
 }
 
-
+/* show for kid: kid */
 .kids_info_wrapper {
   text-align: center;
   h2 {
@@ -351,13 +355,10 @@ pre {
   margin-bottom: 100px;
 }
 
-.diary_button_wrapper {
-  margin-bottom: 100px;
-}
-
 .introduction_button_wrapper {
   margin-bottom: 200px;
 }
+
 
 /* edit for kid: kid */
 .edit_for_kid {
@@ -366,6 +367,7 @@ pre {
   }
 }
 
+
 /* after action for kid: kid */
 .back_home {
   padding: 0px 100px;
@@ -373,11 +375,12 @@ pre {
   input {
     width: 10%;
     border: 0px;
+    margin-left: 0%;
   }
 }
 
-/* index for kid: post */
-.post_index_for_kid {
 
-
+/* new for kid: post */
+.post_new_for_kid {
+  margin-bottom: 100px;
 }
