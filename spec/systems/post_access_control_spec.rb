@@ -92,7 +92,7 @@ RSpec.describe 'post access control spec', type: :system do
   end
 
 
-  context 'when user login and create first facility' do
+  context 'when user login' do
 
     before do
       log_in_as(user)
