@@ -24,6 +24,7 @@ users = User.order(:created_at).take(10)
 
 facility_names = ['Kids Duo', 'Los Ninos', 'はなまる', 'Play with us', 'もとーれ']
 school_names = ['本田第一小学校', '本田第二小学校', '川崎小学校', '山葉小学校']
+park_names = ["大山公園", "松の木公園", "かぶと虫公園", "公園", "島田公園"]
 
 users.each do |user|
 
@@ -43,5 +44,11 @@ users.each do |user|
                            introduction: introduction)
 
     end
+
+    2.times do |n|
+      title = "今日の出来事"
+      park = park_names.shuffle.first
+      content = "今日はみんなで" + park + "に行きました。\n" + "楽しかったです。"
+      facility.posts.create!(title: title, content: content)
   end
 end

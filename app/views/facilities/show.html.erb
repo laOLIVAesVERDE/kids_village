@@ -20,7 +20,6 @@
     <p class="right"><%= link_to '新たに児童を追加する', new_facility_kid_path(@facility), class: 'btn btn-warning' %></p>
     <br>
     <% if @facility.kids.any? %>
-
       <table class="table">
         <thead>
           <tr>
@@ -34,8 +33,25 @@
           <%= render @kids %>
         </tbody>
       </table>
-      <ol class="kids">
-      </ol>
     <% end %>
+
+    <hr>
+    <div class="post_index">
+      <h3 style="display:inline;">作成された日記の数：<%= @facility.posts.count %></h3>
+      <p class="right"><%= link_to '新たに日記を作成する', new_facility_post_path(@facility), class: 'btn btn-warning' %></p>
+      <br>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>タイトル</th>
+              <th>内容</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <%= render @posts %>
+          </tbody>
+        </table>
+    </div>
 
 </div>

@@ -1,0 +1,33 @@
+<% provide(:title, '日記作成') %>
+<h1>日記作成</h1>
+
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @post, url: facility_posts_path, local: true) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <label for="post_writers">日記を書く人</label>
+      <%= f.select :kid_ids, @facility.kids.all.map{|t| [t.name, t.id]}, { include_hidden: false }, { class: 'kids_select_multiple', multiple: true } %>
+
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form_control', id: 'post_title' %>
+
+      <%= f.label :content %>
+      <p>※一文が長くなりすぎないように記入してください。(目安：20文字)</p>
+      <%= f.text_area :content, class: 'form_control', id: 'post_content' %>
+
+
+      <%= f.submit "日記を作成する", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+        $( ".kids_select_multiple" ).select2({
+          width: 600,
+          multiple: true
+        });
+      });
+</script>

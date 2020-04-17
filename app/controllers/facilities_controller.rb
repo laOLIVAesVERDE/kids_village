@@ -5,6 +5,7 @@ class FacilitiesController < ApplicationController
   def show
     @facility = Facility.find(params[:id])
     @kids = @facility.kids
+    @posts = @facility.posts
     if params[:for_kid]
       render 'show_for_kid'
     end
