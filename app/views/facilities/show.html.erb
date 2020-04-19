@@ -31,6 +31,7 @@
         </thead>
         <tbody>
           <%= render @kids %>
+          <%= paginate @kids, param_name: 'pagination_kids' %>
         </tbody>
       </table>
     <% end %>
@@ -50,6 +51,7 @@
           </thead>
           <tbody>
             <%= render @posts %>
+            <%= paginate @posts, param_name: 'pagination_posts' %>
           </tbody>
         </table>
     </div>

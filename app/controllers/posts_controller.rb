@@ -4,7 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @facility = Facility.find(params[:facility_id])
-    @posts = @facility.posts.all
+    @posts = @facility.posts.all.page(params[:pagination_posts]).per(5)
+
     if params[:for_kid] or request.referer.include?('for_kid')
       render 'index_for_kid'
     end

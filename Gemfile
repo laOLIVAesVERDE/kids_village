@@ -13,9 +13,10 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'rails-i18n'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'select2-rails'
-gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'kaminari'
 gem 'faker'
 
 # Use Puma as the app server
