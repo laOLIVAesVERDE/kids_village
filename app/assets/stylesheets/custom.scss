@@ -35,6 +35,8 @@ textarea {
   }
 }
 
+
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -86,6 +88,11 @@ p {
     color: black;
 }
 
+/* home */
+.how_to {
+  margin: auto;
+  width: 80%;
+}
 
 /* footer */
 
@@ -286,9 +293,7 @@ pre {
 
 /* show for kid: facility */
 .logo_for_kid {
-  width: 1050px;
-  height: 450px;
-  margin: auto;
+  width: 80%;
 }
 
 .box {
@@ -310,8 +315,9 @@ pre {
     }
 }
 
-.diary_button_wrapper {
-  margin-bottom: 100px;
+.post_button_wrapper {
+  margin: 0px 20px 100px;
+
 }
 
 
@@ -344,18 +350,22 @@ pre {
 }
 
 .action_wrapper {
-  margin: 40px 80px 100px;
+  margin: 40px 40px 100px;
   padding: 0px 50px;
   input {
     margin: 0px 15px;
   }
+  label {
+    font-size: small;
+  }
 }
 
 .mail_button_wrapper {
-  margin-bottom: 100px;
+  padding: 0px 40px 250px;
 }
 
 .introduction_button_wrapper {
+  padding: 0px 40px 200px;
   margin-bottom: 200px;
 }
 
