@@ -13,6 +13,13 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
+@font-face {
+  font-family: 'cinecaption';
+  src: font-url('/assets/cinecaption226.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* universal */
 
 body {
@@ -293,10 +300,12 @@ pre {
 
 /* show for kid: facility */
 .logo_for_kid {
-  width: 80%;
+  font-family: 'cinecaption';
+  width: 60%;
 }
 
 .box {
+    font-family: 'cinecaption';
     padding: 0.5em 1em;
     margin: 2em 0;
     font-weight: bold;
@@ -316,7 +325,11 @@ pre {
 }
 
 .post_button_wrapper {
+  font-family: 'cinecaption';
   margin: 0px 20px 100px;
+  label {
+    font-size: large;
+  }
 
 }
 
@@ -332,6 +345,7 @@ pre {
 
 /* show for kid: kid */
 .kids_info_wrapper {
+  font-family: 'cinecaption';
   text-align: center;
   h2 {
     margin-bottom: 10px;
@@ -343,6 +357,7 @@ pre {
   pre {
     background-color: transparent;
     border: 0px;
+    font-family: 'cinecaption';
   }
   .badge {
     background-color: #58A7D2;
@@ -350,6 +365,7 @@ pre {
 }
 
 .action_wrapper {
+  font-family: 'cinecaption';
   margin: 40px 40px 100px;
   padding: 0px 50px;
   input {
@@ -372,6 +388,7 @@ pre {
 
 /* edit for kid: kid */
 .edit_for_kid {
+  font-family: 'cinecaption';
   textarea {
     height: 200px;
   }
@@ -392,9 +409,108 @@ pre {
 
 /* new for kid: post */
 .post_new_for_kid {
-  margin-bottom: 100px;
+  font-family: 'cinecaption';
+  margin: auto auto auto 100px;
+  width: 80%;
+  padding-bottom: 100px;
+  input {
+    margin-bottom: 100px;
+  }
 }
 
-.card {
-  border: solid;
+
+
+
+/* index for kid: post */
+.post_index_for_kid {
+  font-family: 'cinecaption';
+  margin: auto;
+  padding-bottom: 100px;
+  .card-columns {
+    .card_wrapper {
+      height: auto;
+      margin: 5px 0px;
+    }
+    .card {
+      padding: 5px 5px;
+      border: solid 5px #FFBB00;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
+    .card-body {
+      font-family: 'cinecaption';
+    }
+    input {
+      color: #0099ff;
+      text-align: left;
+      border: 0px;
+      padding: 1px;
+    }
+  }
+}
+
+
+
+.post_show_for_kid {
+  @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+  body {
+    margin: 0;
+    padding: 0;
+    background: lightgoldenrodyellow;
+  }
+  .paper {
+    position: absolute;
+    height: 550px;
+    width: 450px;
+    background: rgba(255,255,255,0.9);
+    margin: -200px -225px;
+    left: 50%;
+    top: 50%;
+    box-shadow: 0px 0px 5px 0px #888;
+  }
+  .paper::before {
+    content: '';
+    position: absolute;
+    left: 45px;
+    height: 100%;
+    width: 2px;
+    background: rgba(255,0,0,0.4);
+  }
+  .lines {
+    margin-top: 40px;
+    height: calc(100% - 40px);
+    width: 100%;
+    background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+  }
+  .text {
+    position: absolute;
+    top: 65px;
+    left: 55px;
+    bottom: 10px;
+    right: 10px;
+    line-height: 25px;
+    font-family: 'cinecaption';
+    overflow: hidden;
+    outline: none;
+    pre {
+      font-family: 'cinecaption';
+    }
+  }
+  .holes {
+    position: absolute;
+    left: 10px;
+    height: 25px;
+    width: 25px;
+    background: lightgoldenrodyellow;
+    border-radius: 50%;
+    box-shadow: inset 0px 0px 2px 0px #888;
+  }
+  .hole-top {
+    top: 10%;
+  }
+  .hole-middle {
+    top: 50%;
+  }
+  .hole-bottom {
+    bottom: 10%;
+  }
 }
