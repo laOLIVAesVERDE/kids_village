@@ -50,5 +50,6 @@ users.each do |user|
       park = park_names.shuffle.first
       content = "今日はみんなで" + park + "に行きました。\n" + "楽しかったです。"
       facility.posts.create!(title: title, content: content)
+    end
   end
 end
