@@ -26,13 +26,14 @@
         <%= hidden_field_tag :for_kid, " " %>
         <%= label_tag "見る" %>
         <br>
-        <%= image_submit_tag "write_post.png" %>
+        <%= image_submit_tag "see_post.png" %>
       <% end %>
-
       <%= form_tag(new_facility_post_path(@facility), method: :get, class: "col-xs-5 col-sm-3 right") do %>
         <%= hidden_field_tag :for_kid, " " %>
         <%= label_tag "書く" %>
         <br>
-        <%= image_submit_tag "see_post.png" %>
+        <%= image_submit_tag "write_post.png" %>
       <% end %>
+
+
     </div>

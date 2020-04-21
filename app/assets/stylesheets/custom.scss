@@ -327,6 +327,9 @@ pre {
 .post_button_wrapper {
   font-family: 'cinecaption';
   margin: 0px 20px 100px;
+  input {
+    border: 0px;
+  }
   label {
     font-size: large;
   }
@@ -369,6 +372,7 @@ pre {
   margin: 40px 40px 100px;
   padding: 0px 50px;
   input {
+    border: 0px;
     margin: 0px 15px;
   }
   label {
@@ -413,7 +417,25 @@ pre {
   margin: auto auto auto 100px;
   width: 80%;
   padding-bottom: 100px;
-  input {
+  span {
+    .select2-selection {
+      border: solid 3px #87CEEB;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    }
+    ul {
+      height: 30px;
+      margin-bottom: 20px;
+    }
+  }
+  label {
+    margin-top: 20px;
+  }
+  .form_control {
+    padding: 10px;
+    border: solid 3px #87CEEB;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  }
+  .btn {
     margin-bottom: 100px;
   }
 }
@@ -426,6 +448,9 @@ pre {
   font-family: 'cinecaption';
   margin: auto;
   padding-bottom: 100px;
+  .post_index_logo {
+    width: 60%;
+  }
   .card-columns {
     .card_wrapper {
       height: auto;
@@ -493,6 +518,7 @@ pre {
     outline: none;
     pre {
       font-family: 'cinecaption';
+      font-size: 15px;
     }
   }
   .holes {
