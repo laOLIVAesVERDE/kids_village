@@ -7,6 +7,7 @@
     <div class="box row">
       <h4>自分の名前を選んでね</h4>
       <hr>
+      <%= paginate @kids, param_name: 'pagination_kids' %>
       <% if @facility.kids.any? %>
           <% if request.url.include?('for_kid') %>
             <% for kid in @kids %>
