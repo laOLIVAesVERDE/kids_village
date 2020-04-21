@@ -4,8 +4,8 @@ class FacilitiesController < ApplicationController
 
   def show
     @facility = Facility.find(params[:id])
-    @kids = @facility.kids
-    @posts = @facility.posts
+    @kids = @facility.kids.page(params[:pagination_kids]).per(5)
+    @posts = @facility.posts.page(params[:pagination_posts]).per(5)
     if params[:for_kid]
       render 'show_for_kid'
     end

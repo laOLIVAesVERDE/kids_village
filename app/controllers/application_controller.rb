@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
 
   private
-  
+    PER = 5
+
     def logged_in_user
       unless logged_in?
         store_location

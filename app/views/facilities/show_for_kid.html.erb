@@ -1,5 +1,9 @@
 <% provide(:title, @facility.name )%>
 
+    <div class="center">
+      <%= image_tag('logo_for_kid.png', class: 'logo_for_kid') %>
+    </div>
+
     <div class="box row">
       <h4>自分の名前を選んでね</h4>
       <hr>
@@ -15,16 +19,21 @@
       <% end %>
     </div>
 
-    <div class="diary_button_wrapper">
+    <div class="row post_button_wrapper">
       <h4>日記</h4>
       <hr>
-      <form method="get" action="/facilities/<%= @facility.id %>/posts">
-        <input class="btn btn-primary col-xs-3 left" type="submit" value="見る" />
-        <input type="hidden" name="for_kid">
-      </form>
+      <%= form_tag(facility_posts_path(@facility), method: :get, class: "col-xs-5 col-sm-3 left") do %>
+        <%= hidden_field_tag :for_kid, " " %>
+        <%= label_tag "見る" %>
+        <br>
+        <%= image_submit_tag "see_post.png" %>
+      <% end %>
+      <%= form_tag(new_facility_post_path(@facility), method: :get, class: "col-xs-5 col-sm-3 right") do %>
+        <%= hidden_field_tag :for_kid, " " %>
+        <%= label_tag "書く" %>
+        <br>
+        <%= image_submit_tag "write_post.png" %>
+      <% end %>
 
-      <form method="get" action="/facilities/<%= @facility.id %>/posts/new">
-        <input class="btn btn-primary col-xs-3 left" type="submit" value="書く" />
-        <input type="hidden" name="for_kid">
-      </form>
+
     </div>

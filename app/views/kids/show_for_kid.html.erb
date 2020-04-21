@@ -25,28 +25,29 @@
     <div class="mail_button_wrapper">
       <h4>連絡する</h4>
       <hr>
-      <%= form_tag(facility_kid_back_from_schools_path(@facility, @kid), method: :post) do %>
+      <%= form_tag(facility_kid_back_from_schools_path(@facility, @kid), method: :post, class: "col-xs-5 col-sm-3 left") do %>
         <%= hidden_field_tag :for_kid, " " %>
-        <%= submit_tag "学校から戻りました!", class: "btn btn-primary col-xs-3 left" %>
+        <%= image_submit_tag "school.png" %>
       <% end %>
 
-      <%= form_tag(facility_kid_finish_homeworks_path(@facility, @kid), method: :post) do %>
+      <%= form_tag(facility_kid_finish_homeworks_path(@facility, @kid), method: :post, class: "col-xs-5 col-sm-3 right") do %>
         <%= hidden_field_tag :for_kid, " " %>
-        <%= submit_tag "宿題が終わりました!", class: "btn btn-primary col-xs-3 right" %>
+        <%= image_submit_tag "homework.png" %>
       <% end %>
     </div>
+    <br>
 
     <div class="introduction_button_wrapper">
       <h4>自分のこと</h4>
       <hr>
-      <form method="get" action="/facilities/<%= @facility.id %>/kids/<%= @kid.id %>/edit">
-        <input class="btn btn-primary col-xs-3 left" type="submit" value="自己紹介を変えたい!" />
-        <input type="hidden" name="for_kid">
-      </form>
-
-      <%= form_tag(facility_kid_finish_homeworks_path(@facility, @kid), method: :post) do %>
+      <%= form_tag(edit_facility_kid_path(@facility, @kid), method: :get, class: "col-xs-5 col-sm-3 left") do %>
         <%= hidden_field_tag :for_kid, " " %>
-        <%= submit_tag "写真を変えたい!", class: "btn btn-primary col-xs-3 right" %>
+        <%= image_submit_tag "introduction.png" %>
+      <% end %>
+
+      <%= form_tag(edit_facility_kid_path(@facility, @kid), method: :get, class: "col-xs-5 col-sm-3 right") do %>
+        <%= hidden_field_tag :for_kid, " " %>
+        <%= image_submit_tag "photo.png" %>
       <% end %>
     </div>
   </div>
