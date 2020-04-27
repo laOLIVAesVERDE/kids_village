@@ -1,9 +1,10 @@
 <% provide(:title, "みんなの日記") %>
 <div class="row post_show_for_kid">
-  <form class="back_icon" method="get" action="/facilities/<%= params[:facility_id] %>/posts">
-    <%= image_submit_tag("back_icon.png")%>
-    <input type="hidden" name="for_kid">
-  </form>
+  <%= form_tag(facility_posts_path(@facility), method: :get, class: "back_icon") do %>
+    <%= hidden_field_tag :for_kid, " " %>
+    <%= image_submit_tag "back_icon.png" %>
+  <% end %>
+
     <div class="paper">
       <div class="lines">
         <div class="text" contenteditable spellcheck="false">
