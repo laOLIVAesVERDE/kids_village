@@ -46,10 +46,10 @@ RSpec.describe KidMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.html_part.body).to match(kid.name + "さんからのメッセージです。")
+      expect(mail.html_part.body).to match(kid.name + "さん@" + kid.facility.name + "からのメッセージです。")
       expect(mail.html_part.body).to match("学校から戻りました!")
 
-      expect(mail.text_part.body).to match(kid.name + "さんからのメッセージです。")
+      expect(mail.text_part.body).to match(kid.name + "さん@" + kid.facility.name + "からのメッセージです。")
       expect(mail.text_part.body).to match("学校から戻りました!")
     end
   end
@@ -69,10 +69,10 @@ RSpec.describe KidMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.html_part.body).to match(kid.name + "さんからのメッセージです。")
+      expect(mail.html_part.body).to match(kid.name + "さん@" + kid.facility.name + "からのメッセージです。")
       expect(mail.html_part.body).to match("今日の宿題が終わりました!")
 
-      expect(mail.text_part.body).to match(kid.name + "さんからのメッセージです。")
+      expect(mail.text_part.body).to match(kid.name + "さん@" + kid.facility.name + "からのメッセージです。")
       expect(mail.text_part.body).to match("今日の宿題が終わりました!")
     end
   end

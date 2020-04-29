@@ -53,10 +53,10 @@ RSpec.describe PostMailer, type: :mailer do
     end
 
     it "renders the body" do
-      expect(mail.html_part.body).to match(kid.name + "さんが日記を書きました。")
+      expect(mail.html_part.body).to match(kid.name + "さん@" +kid.facility.name + "が日記を書きました。")
       expect(mail.html_part.body).to match(post.content)
 
-      expect(mail.text_part.body).to match(kid.name + "さんが日記を書きました。")
+      expect(mail.text_part.body).to match(kid.name + "さん@" +kid.facility.name + "が日記を書きました。")
       expect(mail.text_part.body).to match(post.content)
     end
   end
