@@ -14,5 +14,14 @@
       <%= f.submit "ログイン", class: "btn btn-primary" %>
     <% end %>
     <p>はじめての方： <%= link_to "こちらから登録", signup_path %></p>
+
+    <div class="test_login">
+      <%= form_for(:session, url: login_path) do |f| %>
+        <%= f.hidden_field :email, :value => "example@kidsvillage.com" %>
+        <%= f.hidden_field :password, :value => "password" %>
+        <%= f.submit "テストユーザーとしてログイン", class: "btn btn-warning" %>
+      <% end %>
+    </div>
   </div>
+
 </div>

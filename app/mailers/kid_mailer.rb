@@ -7,7 +7,7 @@ class KidMailer < ApplicationMailer
   #
   def back_from_school(kid)
     @kid = kid
-
+    @facility = @kid.facility
     mail to: kid.email, subject: '学校から戻りました!'
   end
 
@@ -18,7 +18,7 @@ class KidMailer < ApplicationMailer
   #
   def finish_homework(kid)
     @kid = kid
-
+    @facility = @kid.facility
     mail to: kid.email, subject: '宿題が終わりました!'
   end
 end

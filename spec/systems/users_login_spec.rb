@@ -60,6 +60,6 @@ RSpec.describe 'users login', type: :system do
         expect(page).to_not have_link nil, href: user_path(user)
       end
     end
-
   end
+
 end
