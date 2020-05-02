@@ -12,17 +12,6 @@ RSpec.describe 'Access to static_pages', type: :request do
     end
   end
 
-  context 'GET #help' do
-    before { get help_path }
-    it 'responds successfully' do
-      expect(response).to have_http_status 200
-    end
-    it "has title 'Help | Ruby on Rails Sample App'" do
-      expect(response.body).to include full_title('Help')
-    end
-  end
-
-
   context 'GET #contact' do
     before { get contact_url }
     it 'responds successfully' do

@@ -56,6 +56,7 @@ RSpec.describe 'facility access control', type: :system do
 
     it 'cannot create facility without name' do
       click_link '新たに施設を追加する'
+      sleep(3)
       facility_name = ' '
       fill_in '施設名', with: facility_name
       click_button '施設を追加する'

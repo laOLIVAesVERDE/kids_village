@@ -11,11 +11,11 @@ RSpec.describe StaticPagesController, type: :controller do
     end
   end
 
-  describe "GET #help" do
+  describe "GET #contact" do
     it "returns http success" do
-      get :help
+      get :contact
       expect(response).to have_http_status(:success)
-      assert_select "title", "Help | Ruby on Rails Sample App"
+      assert_select "title", "Contact | Ruby on Rails Sample App"
     end
   end
 
