@@ -13,3 +13,11 @@ development:
 test:
   <<: *default
   database: kids_village_test
+
+production:
+  <<: *default
+  host: <%= Rails.application.secrets.DB_HOST %>
+  databaese: <%= Rails.application.secrets.DB_NAME %>
+  username: <%= Rails.application.secrets.DB_USERNAME %>
+  password: <%= Rails.application.secrets.DB_PASSWORD %>
+  
