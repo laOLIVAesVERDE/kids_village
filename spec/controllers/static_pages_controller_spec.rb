@@ -7,7 +7,7 @@ RSpec.describe StaticPagesController, type: :controller do
     it "returns http success" do
       get :home
       expect(response).to have_http_status(:success)
-      assert_select "title", "ホーム | Ruby on Rails Sample App"
+      assert_select "title", "ホーム | Kids Village"
     end
   end
 
@@ -15,7 +15,7 @@ RSpec.describe StaticPagesController, type: :controller do
     it "returns http success" do
       get :contact
       expect(response).to have_http_status(:success)
-      assert_select "title", "Contact | Ruby on Rails Sample App"
+      assert_select "title", "Contact | Kids Village"
     end
   end
 

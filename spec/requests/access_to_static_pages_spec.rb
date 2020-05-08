@@ -7,7 +7,7 @@ RSpec.describe 'Access to static_pages', type: :request do
     it 'responds successfully' do
       expect(response).to have_http_status 200
     end
-    it "has title 'Ruby on Rails Sample App'" do
+    it "has title 'Kids Village'" do
       expect(response.body).to include full_title('')
     end
   end
@@ -17,7 +17,7 @@ RSpec.describe 'Access to static_pages', type: :request do
     it 'responds successfully' do
       expect(response).to have_http_status 200
     end
-    it "has title 'Contact | Ruby on Rails Sample App'" do
+    it "has title 'Contact | Kids Village'" do
       expect(response.body).to include full_title('Contact')
     end
   end
