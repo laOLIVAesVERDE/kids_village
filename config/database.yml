@@ -13,3 +13,9 @@ development:
 test:
   <<: *default
   database: kids_village_test
+
+production:
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
