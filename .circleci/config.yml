@@ -6,9 +6,11 @@ jobs:
       environment:
         - BUNDLER_VERSION: 2.0.2
         - RAILS_ENV: test
+
+    - image: circleci/postgres:11.3
+      environment:
         - PGHOST: 127.0.0.1
         - PGUSER: root
-    - image: circleci/postgres:11.3
 
     working_directory: ~/kids_village  #自身のアプリディレクトリ名を設定
 
