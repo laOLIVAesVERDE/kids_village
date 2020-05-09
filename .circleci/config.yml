@@ -6,10 +6,9 @@ jobs:
       environment:
         - BUNDLER_VERSION: 2.0.2
         - RAILS_ENV: 'test'
-    - image: circleci/mysql:5.7
-      environment:
-        - MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
-        - MYSQL_ROOT_HOST: '127.0.0.1'
+        - PGHOST: 127.0.0.1
+        - PGUSER: postgres
+    - image: circleci/postgres:11.3
 
     working_directory: ~/kids_village  #自身のアプリディレクトリ名を設定
 
