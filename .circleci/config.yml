@@ -41,8 +41,8 @@ jobs:
     - run:
         name: Databasesetup
         command: |
-           bundle exec rake db:create
-           bundle exec rake db:schema:load
+           docker-compose run web bundle exec rake db:create
+           docker-compose run web bundle exec rake db:schema:load
 
     # run tests!
     - run:
