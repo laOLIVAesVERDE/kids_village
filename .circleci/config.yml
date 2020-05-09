@@ -5,9 +5,9 @@ jobs:
     - image: circleci/ruby:2.6.3-node-browsers
       environment:
         - BUNDLER_VERSION: 2.0.2
-        - RAILS_ENV: 'test'
+        - RAILS_ENV: test
         - PGHOST: 127.0.0.1
-        - PGUSER: postgres
+        - PGUSER: root
     - image: circleci/postgres:11.3
 
     working_directory: ~/kids_village  #自身のアプリディレクトリ名を設定
