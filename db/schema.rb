@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 20200412085739) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "facilities", force: :cascade do |t|
     t.string "name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_facilities_on_user_id_and_created_at"
@@ -26,7 +29,7 @@ ActiveRecord::Schema.define(version: 20200412085739) do
     t.string "school"
     t.string "email"
     t.text "introduction"
-    t.integer "facility_id"
+    t.bigint "facility_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["facility_id", "created_at"], name: "index_kids_on_facility_id_and_created_at"
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20200412085739) do
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.integer "facility_id"
+    t.bigint "facility_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["facility_id", "created_at"], name: "index_posts_on_facility_id_and_created_at"
@@ -54,4 +57,7 @@ ActiveRecord::Schema.define(version: 20200412085739) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "facilities", "users"
+  add_foreign_key "kids", "facilities"
+  add_foreign_key "posts", "facilities"
 end
