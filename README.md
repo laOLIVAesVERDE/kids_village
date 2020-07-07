@@ -1,5 +1,7 @@
 ![logo_for_kid](https://user-images.githubusercontent.com/57529705/81412093-4ce1e180-917e-11ea-9949-c5f605ebfa02.png)
 # KidsVillage概要
+**■サイトURL : https://kids-village-portal.com/**  
+  
 **■作成のきっかけ**  
   大学時代にとある学童保育施設にて学生スタッフとして勤務しており、  
   その中で感じた課題を解決できないかと考え本アプリの作成に至りました。  
