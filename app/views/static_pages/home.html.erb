@@ -10,12 +10,17 @@
     Kids Villageは<br><br>
     多彩な機能で学童を運営する方をサポートします。
   </h2>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-  <hr>
-  <%= form_for(:session, url: login_path) do |f| %>
-    <%= f.hidden_field :email, :value => "example@kidsvillage.com" %>
-    <%= f.hidden_field :password, :value => "password" %>
-    <%= f.submit "テストユーザーとしてログイン", class: "btn btn-warning btn-lg w-25" %>
+
+  <% if logged_in? %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+  <% else %>
+    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <hr>
+    <%= form_for(:session, url: login_path) do |f| %>
+      <%= f.hidden_field :email, :value => "example@kidsvillage.com" %>
+      <%= f.hidden_field :password, :value => "password" %>
+      <%= f.submit "テストユーザーとしてログイン", class: "btn btn-warning btn-lg w-25" %>
+    <% end %>
   <% end %>
 </div>
 <hr>
